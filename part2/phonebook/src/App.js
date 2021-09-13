@@ -71,8 +71,7 @@ const App = () => {
   
 
 
-
-
+  // Effect Hooks
   useEffect(() => {
     console.log('effect')
     axios
@@ -83,10 +82,7 @@ const App = () => {
       })
   }, [])
   console.log('render', persons.length, 'notes')
-
-
-
-
+  // End
 
 
 
