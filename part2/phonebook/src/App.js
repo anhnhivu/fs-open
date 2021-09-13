@@ -1,10 +1,26 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import personService from './services/persons'
 
 const Person = (props) => {
+
+  const deleteName = () => {
+    //event.preventDefault()
+    if (window.confirm(`Delete ${props.name}?`)) {
+      personService.del(props.id)
+      .then(
+        //initPerson => {
+          //props.setPersons(initPerson)
+        //}
+      ) 
+    }
+
+    // Have not automatically reload the page yet !!!!
+  }
+  
   return (
     <div>
-      {props.name} {props.number}
+      {props.name} {props.number} &ensp;
+      <button type="submit" onClick={deleteName}>delete</button> 
     </div>
   )
 }
@@ -56,7 +72,8 @@ const Persons = (props) => {
       {props.persons.map(person =>
         <Person key={person.id} 
           name={person.name} 
-          number={person.number}/>
+          number={person.number}
+          id={person.id}/>
       )}
     </div>
   )
@@ -68,23 +85,14 @@ const App = () => {
   const [ newNumber, setNewNumber ] = useState('')
   const [ pattern, setPattern ] = useState('')
 
-  
-
-
   // Effect Hooks
   useEffect(() => {
-    console.log('effect')
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        console.log('promise fulfilled')
-        setPersons(response.data)
-      })
+    personService.getAll().then(
+      initPerson => {
+        setPersons(initPerson)
+      }
+    )
   }, [])
-  console.log('render', persons.length, 'notes')
-  // End
-
-
 
   const addName = (event) => {
     event.preventDefault()
@@ -94,7 +102,7 @@ const App = () => {
       number: newNumber,
       date: new Date().toISOString(),
       important: Math.random() < 0.5,
-      id: persons.length + 1,
+      //id: persons.length + 1,
     }
 
     var pos = -1
@@ -109,16 +117,20 @@ const App = () => {
       alert(`${nameObject.name} is already added to phonebook`)
     }
     else {
-      setPersons(persons.concat(nameObject))
-      console.log(persons)
-      setNewName('')
-      setNewNumber('')
+      personService
+      .create(nameObject)
+      .then(initPerson => {
+        setPersons(persons.concat(initPerson))
+        setNewName('')
+      })
     }
   }
+
   const handleNameChange = (event) => {
     //console.log(event.target.value)
     setNewName(event.target.value)
   }
+
   const handleNumberChange = (event) => {
     setNewNumber(event.target.value)
   }
@@ -146,7 +158,7 @@ const App = () => {
       
       <h3>Numbers</h3>
 
-      <Persons persons={persons} />
+      <Persons persons={persons}/>
 
     </div>
   )

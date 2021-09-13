@@ -36,27 +36,27 @@ List of exercises
 
 2.11. Store the inital state of the application in the file `db.json`.
 
-2.12* - 2.14*. **Data for countries**.
+**2.12* - 2.14*. Data for countries**: Optional. Not Yet Completed.
 
 ---
 
 **Part d**
 
-2.15.
+2.15. Add the numbers to a backend server.
 
-2.16.
+2.16. Extract the code handles the communication with the backend into its own module.
 
-2.17.
+2.17. Make it possible for users to delete entries from the phonebook. Confirm the action by using `window.confirm`.
 
-2.18.
+2.18*. Change the funtionality so that if a number is added to an already existing user, the new number will replace the old number. 
 
 ----
 
 **Part e**
 
-2.19.
+2.19. Improved error message.
 
-2.20.
+2.20*. Even if you handle the exception, the error message is printed to the console.
 
 ----
 
