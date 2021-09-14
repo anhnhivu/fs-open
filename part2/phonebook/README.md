@@ -1,8 +1,8 @@
 # Phonebook 
 
-List of exercises
+Completed: **15**/20. 
 
----
+## List of exercises
 
 **Part a**
 
@@ -36,7 +36,7 @@ List of exercises
 
 2.11. Store the inital state of the application in the file `db.json`.
 
-**2.12* - 2.14*. Data for countries**: Optional. Not Yet Completed.
+**2.12* - 2.14*. Data for countries**: Optional. **Not Completed.**
 
 ---
 
@@ -46,9 +46,13 @@ List of exercises
 
 2.16. Extract the code handles the communication with the backend into its own module.
 
-2.17. Make it possible for users to delete entries from the phonebook. Confirm the action by using `window.confirm`.
+2.17. Make it possible for users to delete entries from the phonebook. Confirm the action by using `window.confirm` => took a lot of time to figure out but it works really fine now.
 
-2.18*. Change the funtionality so that if a number is added to an already existing user, the new number will replace the old number. 
+> click `delete` --> update the names shown on the screen --> delete the entry from `db.json`
+>
+> if `delete` in the filter section --> set the filter input blank
+
+**2.18***. Change the funtionality so that if a number is added to an already existing user, the new number will replace the old number. **Not Completed.**
 
 ----
 
@@ -56,7 +60,7 @@ List of exercises
 
 2.19. Improved error message.
 
-2.20*. Even if you handle the exception, the error message is printed to the console.
+**2.20***. Even if you handle the exception, the error message is printed to the console**. Not Completed.**
 
 ----
 
