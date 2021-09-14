@@ -1,25 +1,3 @@
 {
-  "persons": [
-    {
-      "name": "dfsasflakjsdfsdfsfd",
-      "number": "",
-      "date": "2021-09-13T16:51:26.969Z",
-      "important": false,
-      "id": 12
-    },
-    {
-      "name": "dfdfdf",
-      "number": "dsfdf",
-      "date": "2021-09-13T16:51:31.595Z",
-      "important": true,
-      "id": 14
-    },
-    {
-      "name": "sdfsdf",
-      "number": "dsfdf",
-      "date": "2021-09-13T16:51:33.342Z",
-      "important": false,
-      "id": 15
-    }
-  ]
+  "persons": []
 }

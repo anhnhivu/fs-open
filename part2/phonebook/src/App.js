@@ -2,25 +2,12 @@ import React, { useState, useEffect } from 'react'
 import personService from './services/persons'
 
 const Person = (props) => {
-
-  const deleteName = () => {
-    //event.preventDefault()
-    if (window.confirm(`Delete ${props.name}?`)) {
-      personService.del(props.id)
-      .then(
-        //initPerson => {
-          //props.setPersons(initPerson)
-        //}
-      ) 
-    }
-
-    // Have not automatically reload the page yet !!!!
-  }
-  
   return (
     <div>
       {props.name} {props.number} &ensp;
-      <button type="submit" onClick={deleteName}>delete</button> 
+      <button type="submit" 
+      onClick={(event) => props.deleteName(props.id, props.name, event)}
+      >delete</button> 
     </div>
   )
 }
@@ -34,8 +21,10 @@ const Filter = (props) => {
           />
           {props.namesToShow.map(person =>
           <Person key={person.id} 
+                id={person.id}
                 name={person.name}
-                number={person.number} />
+                number={person.number} 
+                deleteName={props.deleteName}/>
         )}
         </form>
     </div>
@@ -69,11 +58,14 @@ const PersonForm = (props) => {
 const Persons = (props) => {
   return (
     <div>
+      
       {props.persons.map(person =>
         <Person key={person.id} 
           name={person.name} 
           number={person.number}
-          id={person.id}/>
+          id={person.id}
+          deleteName={props.deleteName}
+          />
       )}
     </div>
   )
@@ -93,6 +85,22 @@ const App = () => {
       }
     )
   }, [])
+
+  const deleteName = (id, name, event) => {
+    event.preventDefault()
+    
+    if (window.confirm(`Delete ${name} ?`) === true) {
+      setPersons(persons.filter(p => p.id !== id))
+      personService
+      .del(id)
+      .catch(error => {
+        alert(
+          `'${name}' was already deleted from server`
+        )
+      })
+      setPattern('')
+    }
+  }
 
   const addName = (event) => {
     event.preventDefault()
@@ -122,6 +130,7 @@ const App = () => {
       .then(initPerson => {
         setPersons(persons.concat(initPerson))
         setNewName('')
+        setNewNumber('')
       })
     }
   }
@@ -139,13 +148,15 @@ const App = () => {
   const namesToShow = pattern ? persons.filter(person =>
                         person.name.match(regex) ) : []
 
+
   return (
     <div>
       <h2>Phonebook</h2>
 
      <Filter pattern={pattern} 
             setPattern={setPattern}
-            namesToShow={namesToShow}/>
+            namesToShow={namesToShow}
+            deleteName={deleteName}/>
 
       <h3>Add a new</h3>
 
@@ -158,7 +169,8 @@ const App = () => {
       
       <h3>Numbers</h3>
 
-      <Persons persons={persons}/>
+      <Persons persons={persons} setPersons={setPersons}
+      deleteName={deleteName}/>
 
     </div>
   )
