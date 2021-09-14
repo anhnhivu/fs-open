@@ -81,7 +81,7 @@ npm run server
 
 // package.json
 {
-	"scripts": {
+  "scripts": {
     "server": "json-server -p3001 --watch db.json" // this line
   }
   "dependencies": {
