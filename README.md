@@ -43,6 +43,6 @@ CI/CD
 
 ---
 
-The `README.md` in each folder contains the summary of the course. 
+The `README.md` in each folder contains the summary of the contents. 
 
 The `README.md` file in each project describes the exercises related to the project.
