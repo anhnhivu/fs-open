@@ -1,6 +1,6 @@
 # Part 2
 
-Completed exercises: **15**/20. 
+Completed exercises: **19**/20. 
 
 ---
 

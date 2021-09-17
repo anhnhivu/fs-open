@@ -34,7 +34,7 @@
 
 2.11. Store the inital state of the application in the file `db.json`.
 
-**2.12* - 2.14*. Data for countries**: Optional.
+**2.12* - 2.14*. Data for countries**.
 
 ---
 
