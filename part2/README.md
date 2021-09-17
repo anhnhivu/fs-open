@@ -1,5 +1,9 @@
 # Part 2
 
+Completed exercises: **15**/20. 
+
+---
+
 ## Rendering a collection
 
 > Tip: Use `console.log()` more.

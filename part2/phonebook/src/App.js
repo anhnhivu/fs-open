@@ -71,13 +71,20 @@ const Persons = (props) => {
   )
 }
 
-const Notification = ({ message }) => {
-  if (message === null) {
+const Notification = (props) => {
+  if (props.message === null) {
     return null
   }
+
+  if (props.success === true) 
   return (
+    <div className="success">
+      {props.message}
+    </div>
+  )
+  else return (
     <div className="error">
-      {message}
+      {props.message}
     </div>
   )
 }
@@ -88,6 +95,7 @@ const App = () => {
   const [ newNumber, setNewNumber ] = useState('')
   const [ pattern, setPattern ] = useState('')
   const [errorMessage, setErrorMessage] = useState(null)
+  const [success, setSuccess] = useState(true)
 
   // Effect Hooks
   useEffect(() => {
@@ -106,6 +114,10 @@ const App = () => {
       personService
       .del(id)
       .catch(error => {
+        setSuccess(false)
+        setErrorMessage(
+          `${name} was already deleted from server`
+        )
         alert(
           `'${name}' was already deleted from server`
         )
@@ -134,7 +146,28 @@ const App = () => {
     console.log(pos)
 
     if (pos !== -1) {
-      alert(`${nameObject.name} is already added to phonebook`)
+      alert(`${nameObject.name} is already added to phonebook, replace the old number with a new one?`)
+      
+      personService.update(persons[pos]["id"], nameObject)
+      .then(initPerson => {
+        setNewName('')
+        setNewNumber('')
+      })
+      .then(error => {
+        setSuccess(true)
+        setErrorMessage(
+          `${newName}`
+        )
+        setTimeout(() => {
+          setErrorMessage(null)
+        }, 5000)
+      })
+      .catch(error => {
+        setSuccess(false)
+        alert(
+          `'${newName}' has already been removed from server`
+        )
+      })
     }
     else {
       personService
@@ -145,6 +178,7 @@ const App = () => {
         setNewNumber('')
       })
       .then(error => {
+        setSuccess(true)
         setErrorMessage(
           `${newName}`
         )
@@ -174,7 +208,7 @@ const App = () => {
     <div>
       <h1>Phonebook</h1>
 
-     <Notification message={errorMessage}/>
+     <Notification message={errorMessage} success={success}/>
 
      <Filter pattern={pattern} 
             setPattern={setPattern}

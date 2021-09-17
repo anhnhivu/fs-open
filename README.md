@@ -40,3 +40,9 @@ React Native
 
 **Part 11:**
 CI/CD
+
+---
+
+The `README.md` in each folder contains the summary of the course. 
+
+The `README.md` file in each project describes the exercises related to the project.

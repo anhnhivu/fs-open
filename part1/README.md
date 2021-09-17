@@ -1,5 +1,9 @@
 # Part 1
 
+Completed exercises: **14**/14
+
+---
+
 - Create the application
 
 ``` shell

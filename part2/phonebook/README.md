@@ -1,8 +1,6 @@
 # Phonebook 
 
-Completed: **15**/20. 
-
-## List of exercises
+### List of exercises
 
 **Part a**
 
@@ -36,7 +34,7 @@ Completed: **15**/20.
 
 2.11. Store the inital state of the application in the file `db.json`.
 
-**2.12* - 2.14*. Data for countries**: Optional. **Not Completed.**
+**2.12* - 2.14*. Data for countries**: Optional.
 
 ---
 
@@ -52,7 +50,7 @@ Completed: **15**/20.
 >
 > if `delete` in the filter section --> set the filter input blank
 
-**2.18***. Change the funtionality so that if a number is added to an already existing user, the new number will replace the old number. **Not Completed.**
+2.18*. Change the funtionality so that if a number is added to an already existing user, the new number will replace the old number.
 
 ----
 
@@ -60,11 +58,6 @@ Completed: **15**/20.
 
 2.19. Improved error message.
 
-**2.20***. Even if you handle the exception, the error message is printed to the console**. Not Completed.**
+2.20*. Even if you handle the exception, the error message is printed to the console. 
 
 ----
-
-
-
-
-
